@@ -50,8 +50,25 @@ class BeliefStateAgent(Agent):
         """
 
         beliefStates = self.beliefGhostStates
+        print(np.shape(self.beliefGhostStates))
+        print((self.beliefGhostStates[0][1]))
+        [(x_width , y_height)] = evidences
+        x, y = evidences[0][0], evidences[0][1]
         # XXX: Your code here
-        pass
+        # print(self.walls.height)
+        # print(self.walls.width)
+        matrix = np.empty([self.walls.width, self.walls.height])
+        print(np.shape(matrix))
+        for i in range(self.walls.width):
+            for j in range(self.walls.height):
+                if self.walls[i][j] == False:
+                    matrix[i][j] = 0.0
+                else:
+                    matrix[i][j] = 0.1
+
+                matrix[x_width][y_height] *= 2.
+
+        print(matrix)
         # XXX: End of your code
         self.beliefGhostStates = beliefStates
         return beliefStates
